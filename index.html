@@ -4,6 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stand-Up - Agence Marketing Digitale</title>
+        <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><defs><linearGradient id='grad' x1='0%25' y1='0%25' x2='100%25' y2='100%25'><stop offset='0%25' style='stop-color:%23FF0000'/><stop offset='100%25' style='stop-color:%238B0000'/></linearGradient></defs><rect width='100' height='100' rx='15' fill='url(%23grad)'/><text x='50' y='70' font-family='Arial' font-size='45' font-weight='900' fill='white' text-anchor='middle'>SU</text></svg>">
+
      <style>
         * {
             margin: 0;
@@ -1056,9 +1058,604 @@
     border-radius: 16px;
     min-height: 580px;
 }
+.hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(255, 0, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(255, 0, 0, 0.2) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .hero .highlight {
+            color: var(--red);
+            text-shadow: 0 0 30px var(--red);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--light-gray);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.3rem 3.5rem;
+            background: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.5);
+            border: 2px solid var(--red);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.7);
+            background: transparent;
+            border-color: var(--red);
+        }
+         * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --red: #FF0000;
+            --dark-red: #CC0000;
+            --blood-red: #8B0000;
+            --black: #000000;
+            --dark-gray: #1A1A1A;
+            --medium-gray: #2A2A2A;
+            --light-gray: #CCCCCC;
+            --white: #FFFFFF;
+        }
+
+        body.light-mode {
+            --red: #e53935;
+            --dark-red: #d32f2f;
+            --blood-red: #b71c1c;
+            --black: #fafafa;
+            --dark-gray: #e0e0e0;
+            --medium-gray: #f4f4f4;
+            --light-gray: #555555;
+            --white: #181818;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--white);
+            background: var(--black);
+            overflow-x: hidden;
+        }
+
+        /* Navigation - AMÉLIORÉE POUR MOBILE */
+        nav {
+            position: fixed;
+            width: 100%;
+            background: rgba(0, 0, 0, 0.95);
+            backdrop-filter: blur(15px);
+            z-index: 1000;
+            border-bottom: 3px solid var(--red);
+            box-shadow: 0 5px 30px rgba(255, 0, 0, 0.3);
+        }
+
+        body.light-mode nav {
+            background: rgba(250, 250, 250, 0.95);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1.2rem 2rem;
+        }
+
+        .logo-container {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            z-index: 1001;
+        }
+
+        .logo-icon {
+            width: 60px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--red), var(--blood-red));
+            border-radius: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            box-shadow: 0 0 40px rgba(255, 0, 0, 0.6);
+            animation: pulse 2s infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% { box-shadow: 0 0 40px rgba(255, 0, 0, 0.6); }
+            50% { box-shadow: 0 0 60px rgba(255, 0, 0, 0.8); }
+        }
+
+        .logo-text .brand {
+            font-size: 1.8rem;
+            font-weight: 900;
+            color: var(--white);
+            letter-spacing: 2px;
+            text-shadow: 0 0 10px var(--red);
+        }
+
+        .logo-text .tagline {
+            font-size: 0.75rem;
+            color: var(--red);
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-weight: 600;
+        }
+
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 2.5rem;
+        }
+
+        .nav-links {
+            display: flex;
+            list-style: none;
+            gap: 2.5rem;
+        }
+
+        .nav-links a {
+            text-decoration: none;
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1rem;
+            transition: all 0.3s ease;
+            position: relative;
+            padding: 0.5rem 0;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: var(--red);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        .nav-links a:hover {
+            color: var(--red);
+            text-shadow: 0 0 10px var(--red);
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 0.5rem;
+            background: var(--medium-gray);
+            padding: 0.5rem;
+            border-radius: 30px;
+            border: 2px solid var(--red);
+        }
+
+        .lang-btn {
+            padding: 0.6rem 1.3rem;
+            border: none;
+            background: transparent;
+            color: var(--white);
+            font-weight: 700;
+            cursor: pointer;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+        }
+
+        .lang-btn.active {
+            background: var(--red);
+            box-shadow: 0 5px 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .mode-switch {
+            font-size: 1.6rem;
+            background: var(--medium-gray);
+            border: 2px solid var(--red);
+            border-radius: 50%;
+            color: var(--red);
+            width: 42px;
+            height: 42px;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s, color 0.3s;
+        }
+
+        body.light-mode .mode-switch {
+            background: var(--red);
+            color: var(--white);
+        }
+
+        /* MENU TOGGLE BURGER - AMÉLIORÉ */
+        .menu-toggle {
+            display: none;
+            flex-direction: column;
+            cursor: pointer;
+            gap: 6px;
+            z-index: 1002;
+            padding: 8px;
+        }
+
+        .menu-toggle span {
+            width: 30px;
+            height: 3px;
+            background: var(--red);
+            transition: all 0.3s ease;
+            border-radius: 3px;
+        }
+
+        /* Animation du burger en X */
+        .menu-toggle.active span:nth-child(1) {
+            transform: rotate(45deg) translate(8px, 8px);
+        }
+
+        .menu-toggle.active span:nth-child(2) {
+            opacity: 0;
+        }
+
+        .menu-toggle.active span:nth-child(3) {
+            transform: rotate(-45deg) translate(8px, -8px);
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding: 2rem;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            z-index: 0;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 1;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(circle at 30% 50%, rgba(255, 0, 0, 0.2) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(255, 0, 0, 0.2) 0%, transparent 50%);
+            z-index: 1;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            position: relative;
+            z-index: 2;
+            animation: fadeInUp 1.2s ease;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: 4.5rem;
+            margin-bottom: 1.5rem;
+            font-weight: 900;
+            line-height: 1.2;
+            text-shadow: 0 0 20px rgba(255, 0, 0, 0.5);
+        }
+
+        .hero .highlight {
+            color: var(--red);
+            text-shadow: 0 0 30px var(--red);
+        }
+
+        .hero p {
+            font-size: 1.3rem;
+            margin-bottom: 2.5rem;
+            color: var(--light-gray);
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.8);
+        }
+
+        .cta-button {
+            display: inline-block;
+            padding: 1.3rem 3.5rem;
+            background: var(--red);
+            color: var(--white);
+            text-decoration: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.4s ease;
+            box-shadow: 0 10px 40px rgba(255, 0, 0, 0.5);
+            border: 2px solid var(--red);
+        }
+
+        .cta-button:hover {
+            transform: translateY(-5px) scale(1.05);
+            box-shadow: 0 20px 60px rgba(255, 0, 0, 0.7);
+            background: transparent;
+            border-color: var(--red);
+        }
+
+        /* Sections - Styles de base */
+        .services, .portfolio, .about, .contact {
+            padding: 6rem 2rem;
+        }
+
+        .container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+            font-weight: 900;
+            color: var(--white);
+            text-shadow: 0 0 20px var(--red);
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: var(--light-gray);
+            margin-bottom: 4rem;
+            font-size: 1.2rem;
+        }
+
+        /* Footer */
+        footer {
+            background: var(--black);
+            color: var(--light-gray);
+            text-align: center;
+            padding: 3rem 2rem;
+            border-top: 3px solid var(--red);
+        }
+
+        /* RESPONSIVE DESIGN - CORRIGÉ */
+        @media (max-width: 968px) {
+            .menu-toggle {
+                display: flex;
+            }
+
+            .logo-text .brand {
+                font-size: 1.4rem;
+            }
+
+            .logo-icon {
+                width: 50px;
+                height: 50px;
+                font-size: 1.5rem;
+            }
+
+            /* Menu mobile en overlay complet */
+            .nav-right {
+                position: fixed;
+                right: -100%;
+                top: 0;
+                height: 100vh;
+                width: 100%;
+                max-width: 400px;
+                flex-direction: column;
+                background: rgba(0, 0, 0, 0.98);
+                padding: 8rem 3rem 3rem;
+                transition: right 0.4s ease;
+                align-items: flex-start;
+                gap: 3rem;
+                overflow-y: auto;
+                box-shadow: -5px 0 30px rgba(0, 0, 0, 0.5);
+            }
+
+            body.light-mode .nav-right {
+                background: rgba(250, 250, 250, 0.98);
+            }
+
+            .nav-right.active {
+                right: 0;
+            }
+
+            .nav-links {
+                flex-direction: column;
+                width: 100%;
+                gap: 2rem;
+            }
+
+            .nav-links li {
+                width: 100%;
+            }
+
+            .nav-links a {
+                display: block;
+                font-size: 1.3rem;
+                padding: 1rem 0;
+                border-bottom: 1px solid rgba(255, 0, 0, 0.2);
+            }
+
+            .lang-switch {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .mode-switch {
+                width: 100%;
+                height: 50px;
+                border-radius: 30px;
+            }
+
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.1rem;
+            }
+
+            .section-title {
+                font-size: 2.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .nav-container {
+                padding: 1rem 1.5rem;
+            }
+
+            .logo-text .brand {
+                font-size: 1.2rem;
+            }
+
+            .logo-text .tagline {
+                font-size: 0.65rem;
+            }
+
+            .logo-icon {
+                width: 45px;
+                height: 45px;
+                font-size: 1.3rem;
+            }
+
+            .nav-right {
+                max-width: 100%;
+                padding: 7rem 2rem 2rem;
+            }
+
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .cta-button {
+                padding: 1rem 2rem;
+                font-size: 1rem;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+        }
+
+        /* Overlay pour fermer le menu en cliquant à l'extérieur */
+        .menu-overlay {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.7);
+            z-index: 999;
+        }
+
+        .menu-overlay.active {
+            display: block;
+        }
+
     </style>
 </head>
 <body>
+    <div class="menu-overlay" id="menuOverlay"></div>
     <!-- Navigation -->
     <nav id="navbar">
         <div class="nav-container">
@@ -1098,9 +1695,11 @@
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
-        <video autoplay muted loop playsinline class="hero-video">
-            <source src="C:\Users\ahmed\Desktop\stand-up\PixVerse_V5.5_Image_Text_360P_jai_une_agence_d.mp4" type="video/mp4">
-        </video>
+        <!-- REMPLACÉ: <video> par <img> -->
+        <img src="C:\Users\ahmed\Desktop\stand-up\image\PixVerse_Image_Effect_prompt_donner une image  (1).jpg" 
+             alt="Stand-Up Agency Background" 
+             class="hero-image">
+        
         <div class="hero-content">
             <h1>
                 <span data-en="Elevate Your" data-fr="Élevez Votre">Élevez Votre</span> 
@@ -1112,7 +1711,6 @@
             <a href="#contact" class="cta-button" data-en="Start Your Project" data-fr="Démarrer Votre Projet">Démarrer Votre Projet</a>
         </div>
     </section>
-
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
@@ -1399,16 +1997,16 @@
         </div>
     </footer>
 
-    <script>
-         // Mode clair / sombre
+      <script>
+        // Mode clair / sombre
         const modeSwitch = document.querySelector('.mode-switch');
         const body = document.body;
 
-        // Récupérer le mode préféré (optionnel)
         if (localStorage.getItem('theme') === 'light') {
             body.classList.add('light-mode');
             modeSwitch.innerHTML = '🌙';
         }
+
         modeSwitch.addEventListener('click', () => {
             body.classList.toggle('light-mode');
             if (body.classList.contains('light-mode')) {
@@ -1419,6 +2017,46 @@
                 localStorage.setItem('theme', 'dark');
             }
         });
+
+        // MENU TOGGLE - AMÉLIORÉ
+        const menuToggle = document.getElementById('menuToggle');
+        const navRight = document.getElementById('navRight');
+        const menuOverlay = document.getElementById('menuOverlay');
+
+        // Fonction pour ouvrir/fermer le menu
+        function toggleMenu() {
+            navRight.classList.toggle('active');
+            menuToggle.classList.toggle('active');
+            menuOverlay.classList.toggle('active');
+            
+            // Empêcher le scroll du body quand le menu est ouvert
+            if (navRight.classList.contains('active')) {
+                document.body.style.overflow = 'hidden';
+            } else {
+                document.body.style.overflow = '';
+            }
+        }
+
+        // Ouvrir/fermer avec le bouton burger
+        menuToggle.addEventListener('click', toggleMenu);
+
+        // Fermer en cliquant sur l'overlay
+        menuOverlay.addEventListener('click', toggleMenu);
+
+        // Fermer le menu quand on clique sur un lien
+        document.querySelectorAll('.nav-links a').forEach(link => {
+            link.addEventListener('click', () => {
+                if (navRight.classList.contains('active')) {
+                    toggleMenu();
+                }
+            });
+        });
+
+        // Empêcher la fermeture si on clique à l'intérieur du menu
+        navRight.addEventListener('click', (e) => {
+            e.stopPropagation();
+        });
+
         // Language Switcher
         let currentLang = 'fr';
         const langButtons = document.querySelectorAll('.lang-btn');
@@ -1445,68 +2083,8 @@
                     el.textContent = text;
                 }
             });
-            
-            // Update HTML lang attribute
             document.documentElement.lang = lang;
         }
-
-        // Portfolio Filter
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const portfolioItems = document.querySelectorAll('.portfolio-item');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
-                
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-
-                portfolioItems.forEach(item => {
-                    if (filter === 'all' || item.getAttribute('data-category') === filter) {
-                        item.classList.remove('hidden');
-                        item.style.animation = 'fadeInUp 0.5s ease';
-                    } else {
-                        item.classList.add('hidden');
-                    }
-                });
-            });
-        });
-
-        // View project buttons
-        document.querySelectorAll('.view-btn').forEach(btn => {
-            btn.addEventListener('click', (e) => {
-                e.stopPropagation();
-                const message = currentLang === 'fr' 
-                    ? 'Ce projet sera bientôt disponible en détail !' 
-                    : 'This project will be available in detail soon!';
-                alert(message);
-            });
-        });
-
-        // Menu Toggle
-        const menuToggle = document.getElementById('menuToggle');
-        const navRight = document.getElementById('navRight');
-
-        menuToggle.addEventListener('click', () => {
-            navRight.classList.toggle('active');
-        });
-
-        // Close menu when clicking on a link
-        document.querySelectorAll('.nav-links a').forEach(link => {
-            link.addEventListener('click', () => {
-                navRight.classList.remove('active');
-            });
-        });
-
-        // Navbar scroll effect
-        window.addEventListener('scroll', () => {
-            const navbar = document.getElementById('navbar');
-            if (window.scrollY > 50) {
-                navbar.style.boxShadow = '0 4px 30px rgba(0,0,0,0.15)';
-            } else {
-                navbar.style.boxShadow = '0 2px 20px rgba(0,0,0,0.1)';
-            }
-        });
 
         // Smooth scrolling
         document.querySelectorAll('a[href^="#"]').forEach(anchor => {
@@ -1523,44 +2101,14 @@
             });
         });
 
-        // Form submission
-        document.getElementById('contactForm').addEventListener('submit', (e) => {
-            e.preventDefault();
-            const message = currentLang === 'fr' 
-                ? 'Merci pour votre message ! Nous vous contacterons bientôt.' 
-                : 'Thank you for your message! We will contact you soon.';
-            alert(message);
-            e.target.reset();
-        });
-
-        // Intersection Observer for animations
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.style.opacity = '1';
-                    entry.target.style.transform = 'translateY(0)';
-                }
-            });
-        }, observerOptions);
-
-        document.querySelectorAll('.service-card, .stat-box').forEach(card => {
-            card.style.opacity = '0';
-            card.style.transform = 'translateY(30px)';
-            card.style.transition = 'all 0.6s ease';
-            observer.observe(card);
-        });
-
-        // Portfolio items animation
-        document.querySelectorAll('.portfolio-item').forEach(item => {
-            item.style.opacity = '0';
-            item.style.transform = 'translateY(30px)';
-            item.style.transition = 'all 0.6s ease';
-            observer.observe(item);
+        // Navbar scroll effect
+        window.addEventListener('scroll', () => {
+            const navbar = document.getElementById('navbar');
+            if (window.scrollY > 50) {
+                navbar.style.boxShadow = '0 10px 40px rgba(0,0,0,0.3)';
+            } else {
+                navbar.style.boxShadow = '0 5px 30px rgba(255, 0, 0, 0.3)';
+            }
         });
     </script>
 </body>
